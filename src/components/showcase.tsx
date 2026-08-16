@@ -15,7 +15,7 @@ function MiniChart({ delay }: { delay: number }) {
           whileInView={{ height: `${height}%` }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.55, delay: delay + index * 0.04 }}
-          className="w-full rounded-full bg-brand/25 last:bg-brand"
+          className="w-full rounded-full bg-brand/25 transition-[background-color] duration-300 last:bg-brand group-hover:bg-brand/45 last:group-hover:bg-brand"
         />
       ))}
     </div>
@@ -34,13 +34,23 @@ export function Showcase() {
           <motion.article
             key={card.label}
             initial={reduce ? false : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.4, delay: reduce ? 0 : index * 0.07 },
+            }}
+            whileHover={
+              reduce ? undefined : { y: -4, transition: { duration: 0.3, delay: 0 } }
+            }
             viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.4, delay: reduce ? 0 : index * 0.07 }}
-            className="rounded-box border border-line bg-card p-5 shadow-soft"
+            className="group rounded-box border border-line bg-card p-5 shadow-soft transition duration-300 hover:border-brand hover:bg-brand-soft/40 hover:shadow-lift"
           >
-            <p className="text-sm font-medium text-ink-muted">{card.label}</p>
-            <p className="mt-2 text-3xl font-extrabold text-ink">{card.value}</p>
+            <p className="text-sm font-medium text-ink-muted transition-colors duration-300 group-hover:text-brand">
+              {card.label}
+            </p>
+            <p className="mt-2 text-3xl font-extrabold text-ink transition-colors duration-300 group-hover:text-brand">
+              {card.value}
+            </p>
             <p className="mt-1 text-xs text-ink-muted">{card.hint}</p>
             <div className="mt-5 h-2 overflow-hidden rounded-full bg-brand-soft">
               <motion.div
@@ -48,7 +58,7 @@ export function Showcase() {
                 whileInView={{ width: `${card.progress}%` }}
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: reduce ? 0 : 0.8, delay: reduce ? 0 : 0.1 }}
-                className="h-full rounded-full bg-brand"
+                className="h-full rounded-full bg-brand transition-[filter] duration-300 group-hover:brightness-110"
               />
             </div>
             <MiniChart delay={reduce ? 0 : 0.15} />
