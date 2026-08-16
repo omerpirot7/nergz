@@ -50,7 +50,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.08 }}
           className="relative flex justify-center lg:justify-end"
         >
-          <div className="flex aspect-square w-full max-w-[22rem] items-center justify-center overflow-hidden rounded-box border border-line/70 bg-white shadow-lift md:max-w-[26rem]">
+          <div className="flex aspect-square w-full max-w-[22rem] items-center justify-center md:max-w-[26rem]">
             <Image
               src="/images/medical-cross.gif"
               alt={t.hero.mediaAlt}
