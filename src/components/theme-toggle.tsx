@@ -14,11 +14,15 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={toggleTheme}
       aria-label={label}
       className={cn(
-        "focus-ring inline-flex size-10 items-center justify-center rounded-full border border-line bg-card text-ink transition-colors hover:border-brand/40",
+        "group focus-ring inline-flex size-10 items-center justify-center rounded-full border border-line bg-card text-ink transition duration-300 hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft hover:text-brand hover:shadow-soft",
         className,
       )}
     >
-      {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
+      {theme === "dark" ? (
+        <Sun className="size-4 transition-transform duration-300 group-hover:rotate-45" />
+      ) : (
+        <Moon className="size-4 transition-transform duration-300 group-hover:-rotate-12" />
+      )}
     </button>
   );
 }

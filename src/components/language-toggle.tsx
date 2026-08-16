@@ -12,7 +12,7 @@ export function LanguageToggle({ className }: { className?: string }) {
       onClick={toggleLocale}
       aria-label={t.lang.switchTo}
       className={cn(
-        "focus-ring inline-flex h-9 items-center rounded-full border border-line bg-card px-1 text-xs font-semibold text-ink-muted",
+        "focus-ring inline-flex h-9 items-center rounded-full border border-line bg-card px-1 text-xs font-semibold text-ink-muted transition duration-300 hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft hover:text-ink hover:shadow-soft",
         className,
       )}
     >

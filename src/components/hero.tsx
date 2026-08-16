@@ -18,12 +18,12 @@ export function Hero() {
           transition={{ duration: 0.55 }}
           className="text-center lg:text-start"
         >
-          <span className="mx-auto inline-flex rounded-box bg-white/95 px-3 py-2 shadow-soft lg:mx-0">
+          <span className="mx-auto inline-flex lg:mx-0">
             <Image
               src="/images/logo.png"
               alt="Nergz"
-              width={160}
-              height={54}
+              width={246}
+              height={191}
               priority
               className="h-14 w-auto"
             />

@@ -81,12 +81,12 @@ export function Navbar() {
           className="focus-ring flex shrink-0 items-center rounded-box"
           aria-label="Nergz"
         >
-          <span className="rounded-box bg-white/95 px-2 py-1 shadow-soft">
+          <span className="inline-flex">
             <Image
               src="/images/logo.png"
               alt="Nergz"
-              width={132}
-              height={44}
+              width={246}
+              height={191}
               priority
               className="h-10 w-auto md:h-11"
             />
