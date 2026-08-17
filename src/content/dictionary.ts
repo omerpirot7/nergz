@@ -1,4 +1,4 @@
-export const locales = ["ckb", "en"] as const;
+export const locales = ["ckb", "en", "ar"] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "ckb";
@@ -88,9 +88,9 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
     },
     hero: {
-      headline: "یەک سیستم بۆ تەواوی فرۆشگاکەت",
+      headline: "یەک سیستم بۆ تەواوی دەرمانخانەکەت",
       sentence:
-        "فرۆشتن، کۆگا، کڕین و ژمێریاری لە فەزایەکی ئارامدا، بە کوردی و ئینگلیزی.",
+        "فرۆشتنی دەرمان، کۆگا، بەسەرچوون و ژمێریاری — لە فەزایەکی ئارامدا، بە کوردی و ئینگلیزی.",
       cta: "پەیوەندی لە واتسئەپ",
       mediaAlt: "ئایکۆنی خاچی پزیشکی",
     },
@@ -135,9 +135,9 @@ export const dictionary: Record<Locale, Dictionary> = {
       title: "وێنەیەک لە ڕۆژی کار",
       subtitle: "ژمارەکان بۆ تیمەکەت دەخوێندرێنەوە، نەک تەنها کۆدەکرێنەوە.",
       cards: [
-        { label: "تەواوبوونی فرۆشتن", value: "٩٦٪", progress: 96, hint: "ئەم هەفتەیە" },
-        { label: "تەندروستی کۆگا", value: "٨٨٪", progress: 88, hint: "کاڵای ئامادە" },
-        { label: "داخستنی سندوق", value: "٩٢٪", progress: 92, hint: "لە کاتی خۆیدا" },
+        { label: "فرۆشتنی تەواو", value: "٩٦٪", progress: 96, hint: "ئەم هەفتەیە" },
+        { label: "کاڵای بەردەست", value: "٨٨٪", progress: 88, hint: "ئامادە بۆ فرۆشتن" },
+        { label: "داخستنی سندوقی ڕۆژ", value: "٩٢٪", progress: 92, hint: "لە کاتی خۆیدا" },
       ],
     },
     partners: { title: "براندە ناوخۆییەکان لەگەڵ نێرگز" },
@@ -174,9 +174,9 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
     },
     hero: {
-      headline: "One system for the whole shop",
+      headline: "One system for the whole pharmacy",
       sentence:
-        "Sales, stock, purchasing, and cash — in a calm workspace that speaks Kurdish and English.",
+        "Medicine sales, stock, expiry, and cash — in a calm workspace that speaks Kurdish and English.",
       cta: "Message us on WhatsApp",
       mediaAlt: "Animated medical cross",
     },
@@ -221,9 +221,9 @@ export const dictionary: Record<Locale, Dictionary> = {
       title: "A snapshot of the working day",
       subtitle: "Numbers your team can read, not just collect.",
       cards: [
-        { label: "Checkout completion", value: "96%", progress: 96, hint: "this week" },
-        { label: "Stock health", value: "88%", progress: 88, hint: "ready items" },
-        { label: "Drawer close rate", value: "92%", progress: 92, hint: "on time" },
+        { label: "Sales completed", value: "96%", progress: 96, hint: "this week" },
+        { label: "Stock ready to sell", value: "88%", progress: 88, hint: "on the shelves" },
+        { label: "End-of-day cash close", value: "92%", progress: 92, hint: "on schedule" },
       ],
     },
     partners: { title: "Local brands growing with Nergz" },
@@ -240,6 +240,92 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     backToTop: { label: "Back to top", eyebrow: "Top", action: "Top" },
     theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
-    lang: { switchTo: "کوردی", short: "ک" },
+    lang: { switchTo: "English", short: "ک" },
+  },
+  ar: {
+    dir: "rtl",
+    meta: {
+      title: "نرگز — نظام إدارة الصيدلية",
+      description:
+        "نرگز يوفّر مساحة هادئة للمبيعات والمخزون والمشتريات والصندوق — بالكردية والإنجليزية والعربية في لوحة واحدة.",
+    },
+    nav: {
+      open: "فتح القائمة",
+      close: "إغلاق القائمة",
+      items: [
+        { href: "#features", label: "الميزات" },
+        { href: "#showcase", label: "معاينة" },
+        { href: "#partners", label: "الشركاء" },
+        { href: "#contact", label: "تواصل" },
+      ],
+    },
+    hero: {
+      headline: "نظام واحد لصيدليتك بالكامل",
+      sentence:
+        "بيع الأدوية، المخزون، تاريخ الانتهاء، والصندوق — في مساحة هادئة تتحدث الكردية والإنجليزية والعربية.",
+      cta: "راسلنا على واتساب",
+      mediaAlt: "رمز طبي متحرك",
+    },
+    stats: [
+      { value: "+٨٥٠", label: "صيدلية ومخزن" },
+      { value: "١٢", label: "وحدة يومية" },
+      { value: "١١ث", label: "متوسط وقت الدفع" },
+      { value: "٢٤/٧", label: "دعم محلي" },
+    ],
+    features: {
+      eyebrow: "لماذا نرگز",
+      title: "كل وردية، في نظرة واحدة واضحة",
+      subtitle: "أدوات تُسرّع العمل دون أن تُشوّش على يومك.",
+      items: [
+        {
+          title: "دفع في لحظة",
+          description: "أغلق الفاتورة، استلم المبلغ، وحدّث المخزون — في خطوة واحدة.",
+        },
+        {
+          title: "مخزون يُراقَب",
+          description: "اطّلع على الكمية وتاريخ الانتهاء معاً، قبل أن يصبح الرف مشكلة.",
+        },
+        {
+          title: "مشتريات واضحة",
+          description: "سجّل فواتير الموردين واربط المصروفات بالأرباح التي تستطيع شرحها.",
+        },
+        {
+          title: "حسابات العملاء",
+          description: "الديون، التسديدات، وسجل المشتريات لكل عميل — في قائمة واحدة هادئة.",
+        },
+        {
+          title: "صندوق يومي",
+          description: "تابع نقد الصندوق، التحويلات، وإقفال نهاية اليوم دون أوراق مفقودة.",
+        },
+        {
+          title: "تقارير مقروءة",
+          description: "المبيعات، التكاليف، والهامش كصورة بسيطة — لا جدولاً ثقيلاً.",
+        },
+      ],
+    },
+    showcase: {
+      title: "لمحة عن يوم العمل",
+      subtitle: "أرقام يقرأها فريقك، لا يجمعها فقط.",
+      cards: [
+        { label: "مبيعات مكتملة", value: "٩٦٪", progress: 96, hint: "هذا الأسبوع" },
+        { label: "مخزون جاهز للبيع", value: "٨٨٪", progress: 88, hint: "على الرفوف" },
+        { label: "إقفال صندوق اليوم", value: "٩٢٪", progress: 92, hint: "في موعده" },
+      ],
+    },
+    partners: { title: "علامات محلية تنمو مع نرگز" },
+    footer: {
+      headline: "مستعد لتشغيل نرگز؟",
+      sentence: "أرسل رسالة — سنُجهّز النظام ونُرشد فريقك خطوة بخطوة.",
+      cta: "ابدأ على واتساب",
+    },
+    social: {
+      whatsapp: "واتساب",
+      instagram: "إنستغرام",
+      facebook: "فيسبوك",
+      x: "إكس",
+    },
+    backToTop: { label: "العودة إلى الأعلى", eyebrow: "أعلى", action: "أعلى" },
+    theme: { toLight: "التبديل إلى الوضع الفاتح", toDark: "التبديل إلى الوضع الداكن" },
+    lang: { switchTo: "کوردی", short: "ع" },
   },
 };

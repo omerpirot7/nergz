@@ -1,37 +1,41 @@
 "use client";
 
 import { useApp } from "@/context/app-context";
+import { locales, type Locale } from "@/content/dictionary";
 import { cn } from "@/lib/utils";
 
+const localeLabels: Record<Locale, string> = {
+  ckb: "کوردی",
+  en: "EN",
+  ar: "عربي",
+};
+
 export function LanguageToggle({ className }: { className?: string }) {
-  const { locale, toggleLocale, t } = useApp();
+  const { locale, setLocale } = useApp();
 
   return (
-    <button
-      type="button"
-      onClick={toggleLocale}
-      aria-label={t.lang.switchTo}
+    <div
+      role="group"
+      aria-label="Language"
       className={cn(
-        "focus-ring inline-flex h-9 items-center rounded-full border border-line bg-card px-1 text-xs font-semibold text-ink-muted transition duration-300 hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft hover:text-ink hover:shadow-soft",
+        "inline-flex h-9 items-center rounded-full border border-line bg-card px-1 text-xs font-semibold text-ink-muted",
         className,
       )}
     >
-      <span
-        className={cn(
-          "rounded-full px-2.5 py-1 transition-colors",
-          locale === "ckb" && "bg-brand text-white dark:text-[#0d1511]",
-        )}
-      >
-        کوردی
-      </span>
-      <span
-        className={cn(
-          "rounded-full px-2.5 py-1 transition-colors",
-          locale === "en" && "bg-brand text-white dark:text-[#0d1511]",
-        )}
-      >
-        EN
-      </span>
-    </button>
+      {locales.map((code) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => setLocale(code)}
+          aria-pressed={locale === code}
+          className={cn(
+            "focus-ring rounded-full px-2.5 py-1 transition duration-300 hover:text-ink",
+            locale === code && "bg-brand text-white dark:text-[#0d1511]",
+          )}
+        >
+          {localeLabels[code]}
+        </button>
+      ))}
+    </div>
   );
 }

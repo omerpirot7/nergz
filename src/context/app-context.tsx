@@ -11,6 +11,7 @@ import {
 import {
   defaultLocale,
   dictionary,
+  locales,
   type Dictionary,
   type Locale,
 } from "@/content/dictionary";
@@ -46,8 +47,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const storedLocale = window.localStorage.getItem(LOCALE_KEY);
     const storedTheme = window.localStorage.getItem(THEME_KEY);
-    const nextLocale: Locale =
-      storedLocale === "en" || storedLocale === "ckb" ? storedLocale : defaultLocale;
+    const nextLocale: Locale = locales.includes(storedLocale as Locale)
+      ? (storedLocale as Locale)
+      : defaultLocale;
     const nextTheme: Theme =
       storedTheme === "light" || storedTheme === "dark"
         ? storedTheme
@@ -70,7 +72,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   );
 
   const toggleLocale = useCallback(() => {
-    setLocale(locale === "ckb" ? "en" : "ckb");
+    const i = locales.indexOf(locale);
+    setLocale(locales[(i + 1) % locales.length]);
   }, [locale, setLocale]);
 
   const toggleTheme = useCallback(() => {
