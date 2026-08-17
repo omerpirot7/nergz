@@ -18,17 +18,7 @@ export function Hero() {
           transition={{ duration: 0.55 }}
           className="text-center lg:text-start"
         >
-          <span className="mx-auto inline-flex lg:mx-0">
-            <Image
-              src="/images/logo.png"
-              alt="Nergz"
-              width={246}
-              height={191}
-              priority
-              className="h-14 w-auto"
-            />
-          </span>
-          <h1 className="title-wave mt-6 text-4xl font-extrabold leading-[1.35] md:text-5xl lg:text-[3.15rem]">
+          <h1 className="title-wave text-4xl font-extrabold leading-[1.35] md:text-5xl lg:text-[3.15rem]">
             {t.hero.headline}
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-ink-muted md:text-lg lg:mx-0">
