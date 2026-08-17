@@ -1,7 +1,7 @@
 "use client";
 
 import { useApp } from "@/context/app-context";
-import { locales, type Locale } from "@/content/dictionary";
+import { type Locale } from "@/content/dictionary";
 import { cn } from "@/lib/utils";
 
 const localeLabels: Record<Locale, string> = {
@@ -10,6 +10,8 @@ const localeLabels: Record<Locale, string> = {
   ar: "عربي",
 };
 
+const localeOrder: Locale[] = ["en", "ckb", "ar"];
+
 export function LanguageToggle({ className }: { className?: string }) {
   const { locale, setLocale } = useApp();
 
@@ -17,12 +19,13 @@ export function LanguageToggle({ className }: { className?: string }) {
     <div
       role="group"
       aria-label="Language"
+      dir="ltr"
       className={cn(
         "inline-flex h-9 items-center rounded-full border border-line bg-card px-1 text-xs font-semibold text-ink-muted",
         className,
       )}
     >
-      {locales.map((code) => (
+      {localeOrder.map((code) => (
         <button
           key={code}
           type="button"

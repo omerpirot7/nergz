@@ -10,6 +10,8 @@ export const partners = [
   { id: "dewajin", name: "Dewajin", src: "/images/partners/dewajin.png" },
   { id: "westga", name: "Westga", src: "/images/partners/westga.png" },
   { id: "garage", name: "Garage", src: "/images/partners/garag.png" },
+  { id: "nergz", name: "Nergz", src: "/images/partners/nergz-dark.png" },
+  { id: "qazwan", name: "Qazwan", src: "/images/partners/qazwan.png" },
 ] as const;
 
 export const socials = [

@@ -93,6 +93,7 @@ export function Partners() {
                 alt={partner.name}
                 width={140}
                 height={72}
+                unoptimized
                 className="h-[72%] w-[80%] object-contain"
                 draggable={false}
               />
