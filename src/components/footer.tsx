@@ -42,10 +42,13 @@ export function Footer() {
   const reduce = useReducedMotion();
 
   return (
-    <footer id="contact" className="scroll-mt-24 mt-16 bg-footer-bg text-footer-ink md:mt-24">
+    <footer
+      id="contact"
+      className="scroll-mt-28 mt-20 min-h-[min(42vh,22rem)] bg-footer-bg text-footer-ink md:scroll-mt-32 md:mt-28"
+    >
       <div
         dir="ltr"
-        className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-4 py-8 md:flex-row md:items-center md:justify-between md:gap-6 md:px-8 md:py-10 lg:px-12"
+        className="mx-auto flex h-full min-h-[inherit] w-full max-w-7xl flex-col items-center justify-center gap-8 px-4 py-14 md:flex-row md:items-center md:justify-between md:gap-6 md:px-8 md:py-16 lg:px-12"
       >
         <div className="flex shrink-0 items-center gap-3 md:gap-4">
           {socials.map((social) => {

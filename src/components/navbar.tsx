@@ -72,11 +72,14 @@ export function Navbar() {
       setActive("");
       return;
     }
+
+    const el = document.querySelector<HTMLElement>(href);
+    if (!el) return;
+
     setActive(href);
-    document.querySelector(href)?.scrollIntoView({
-      behavior: reduce ? "auto" : "smooth",
-      block: "start",
-    });
+    const headerOffset = window.matchMedia("(min-width: 768px)").matches ? 88 : 80;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
   };
 
   return (

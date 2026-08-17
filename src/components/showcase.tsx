@@ -12,7 +12,7 @@ export function Showcase() {
   const reduce = useReducedMotion();
 
   return (
-    <Section id="showcase" className="mt-10 md:mt-14">
+    <Section id="showcase" className="mt-16 md:mt-24">
       <SectionHeader title={t.showcase.title} subtitle={t.showcase.subtitle} wave />
       <div className="grid gap-4 md:grid-cols-3">
         {t.showcase.cards.map((card, index) => {

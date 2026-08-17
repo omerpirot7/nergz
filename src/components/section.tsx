@@ -25,7 +25,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative isolate scroll-mt-24 overflow-hidden bg-surface py-12 md:py-16",
+        "relative isolate scroll-mt-28 overflow-hidden bg-surface py-16 md:scroll-mt-32 md:py-24",
         bordered && "border-t border-line",
         className,
       )}

@@ -65,7 +65,7 @@ export function Partners() {
   };
 
   return (
-    <Section id="partners" width="narrow">
+    <Section id="partners" width="narrow" className="mt-16 md:mt-24">
       <SectionHeader title={t.partners.title} wave />
       <div
         className="edge-fade-x [container-type:inline-size] dir-ltr cursor-grab overflow-hidden active:cursor-grabbing"

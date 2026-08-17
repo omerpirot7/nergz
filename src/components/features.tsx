@@ -20,7 +20,7 @@ export function Features() {
   const reduce = useReducedMotion();
 
   return (
-    <Section id="features" className="pt-16 md:pt-24">
+    <Section id="features" className="mt-16 pt-16 md:mt-24 md:pt-24">
       <SectionHeader
         eyebrow={t.features.eyebrow}
         title={t.features.title}
