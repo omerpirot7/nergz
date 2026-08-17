@@ -9,6 +9,7 @@ import {
   Wallet,
   Warehouse,
 } from "lucide-react";
+import { DevicePreviews } from "@/components/device-previews";
 import { Section, SectionHeader } from "@/components/section";
 import { useApp } from "@/context/app-context";
 
@@ -19,14 +20,15 @@ export function Features() {
   const reduce = useReducedMotion();
 
   return (
-    <Section id="features">
+    <Section id="features" className="pt-16 md:pt-24">
       <SectionHeader
         eyebrow={t.features.eyebrow}
         title={t.features.title}
         subtitle={t.features.subtitle}
-        wave
+        className="mb-10 md:mb-14"
       />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <DevicePreviews className="mb-10 md:mb-14" />
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 md:gap-8">
         {t.features.items.map((item, index) => {
           const Icon = icons[index] ?? ShoppingBag;
           return (

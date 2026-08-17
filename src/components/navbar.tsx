@@ -26,23 +26,36 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const nodes = SECTION_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => Boolean(el),
-    );
-    if (!nodes.length) return;
+    const updateActive = () => {
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 48;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) setActive(`#${visible.target.id}`);
-      },
-      { rootMargin: "-35% 0px -50% 0px", threshold: [0.15, 0.4, 0.7] },
-    );
+      if (atBottom) {
+        setActive("#contact");
+        return;
+      }
 
-    nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+      const marker = window.innerHeight * 0.35;
+      let current = "";
+
+      for (const id of SECTION_IDS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= marker) {
+          current = `#${id}`;
+        }
+      }
+
+      setActive(current);
+    };
+
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
   }, []);
 
   useEffect(() => {
@@ -59,6 +72,7 @@ export function Navbar() {
       setActive("");
       return;
     }
+    setActive(href);
     document.querySelector(href)?.scrollIntoView({
       behavior: reduce ? "auto" : "smooth",
       block: "start",

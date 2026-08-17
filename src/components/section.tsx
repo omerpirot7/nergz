@@ -25,7 +25,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "scroll-mt-24 py-12 md:py-16",
+        "relative isolate scroll-mt-24 overflow-hidden bg-surface py-12 md:py-16",
         bordered && "border-t border-line",
         className,
       )}
@@ -40,14 +40,16 @@ export function SectionHeader({
   title,
   subtitle,
   wave = false,
+  className,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   wave?: boolean;
+  className?: string;
 }) {
   return (
-    <div className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
+    <div className={cn("mx-auto mb-10 max-w-2xl text-center md:mb-12", className)}>
       {eyebrow ? (
         <p className="mb-2 text-sm font-semibold tracking-wide text-brand">{eyebrow}</p>
       ) : null}

@@ -32,6 +32,7 @@ const AppContext = createContext<AppContextValue | null>(null);
 
 const THEME_KEY = "nergz-theme";
 const LOCALE_KEY = "nergz-locale";
+const LOCALE_COOKIE = "nergz-locale";
 
 function applyDocument(locale: Locale, theme: Theme) {
   const root = document.documentElement;
@@ -41,15 +42,26 @@ function applyDocument(locale: Locale, theme: Theme) {
   root.classList.toggle("dark", theme === "dark");
 }
 
-export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(defaultLocale);
+function persistLocale(locale: Locale) {
+  window.localStorage.setItem(LOCALE_KEY, locale);
+  document.cookie = `${LOCALE_COOKIE}=${locale};path=/;max-age=31536000;SameSite=Lax`;
+}
+
+export function AppProvider({
+  children,
+  initialLocale = defaultLocale,
+}: {
+  children: React.ReactNode;
+  initialLocale?: Locale;
+}) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
   const [theme, setTheme] = useState<Theme>("light");
   useEffect(() => {
     const storedLocale = window.localStorage.getItem(LOCALE_KEY);
     const storedTheme = window.localStorage.getItem(THEME_KEY);
     const nextLocale: Locale = locales.includes(storedLocale as Locale)
       ? (storedLocale as Locale)
-      : defaultLocale;
+      : initialLocale;
     const nextTheme: Theme =
       storedTheme === "light" || storedTheme === "dark"
         ? storedTheme
@@ -59,13 +71,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
     setLocaleState(nextLocale);
     setTheme(nextTheme);
+    persistLocale(nextLocale);
     applyDocument(nextLocale, nextTheme);
-  }, []);
+  }, [initialLocale]);
 
   const setLocale = useCallback(
     (next: Locale) => {
       setLocaleState(next);
-      window.localStorage.setItem(LOCALE_KEY, next);
+      persistLocale(next);
       applyDocument(next, theme);
     },
     [theme],

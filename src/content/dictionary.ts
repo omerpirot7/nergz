@@ -24,6 +24,7 @@ export const socials = [
 export const contactHref = "https://wa.me/9647505541515";
 
 type FeatureItem = { title: string; description: string };
+type DevicePreview = { title: string; description: string };
 type StatItem = { value: string; label: string };
 type ShowcaseCard = { label: string; value: string; progress: number; hint: string };
 type NavItem = { href: string; label: string };
@@ -48,6 +49,10 @@ export type Dictionary = {
     title: string;
     subtitle: string;
     items: FeatureItem[];
+    devices: {
+      mobile: DevicePreview;
+      desktop: DevicePreview;
+    };
   };
   showcase: {
     title: string;
@@ -66,7 +71,6 @@ export type Dictionary = {
     facebook: string;
     x: string;
   };
-  backToTop: { label: string; eyebrow: string; action: string };
   theme: { toLight: string; toDark: string };
   lang: { switchTo: string; short: string };
 };
@@ -83,8 +87,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       open: "کردنەوەی لیست",
       close: "داخستنی لیست",
       items: [
-        { href: "#features", label: "تایبەتمەندی" },
-        { href: "#showcase", label: "پێشبینین" },
+        { href: "#features", label: "تایبەتمەندییەکان" },
+        { href: "#showcase", label: "پوختە" },
         { href: "#partners", label: "هاوبەشەکان" },
         { href: "#contact", label: "پەیوەندی" },
       ],
@@ -92,7 +96,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     hero: {
       headline: "یەک سیستم بۆ تەواوی دەرمانخانەکەت",
       sentence:
-        "فرۆشتنی دەرمان، کۆگا، بەسەرچوون و ژمێریاری — لە فەزایەکی ئارامدا، بە کوردی و ئینگلیزی.",
+        "فرۆشتنی دەرمان، کۆگا، بەسەرچوون و ژمێریاری — لە فەزایەکی ئارامدا، بە کوردی و بە ئینگلیزی و بە عەرەبی.",
       cta: "پەیوەندی لە واتسئەپ",
       mediaAlt: "ئایکۆنی خاچی پزیشکی",
     },
@@ -104,7 +108,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     ],
     features: {
       eyebrow: "بۆچی نێرگز",
-      title: "هەموو ڕۆژێک، لە یەک ڕووناکی",
+      title: "هەموو ئەوەی دەرمانخانەکەت پێویستە، لە یەک شوێندا",
       subtitle: "ئامرازەکانێک کە تیمەکەت خێرا دەکەن، بەبێ شێواندنی سەرپێچ.",
       items: [
         {
@@ -132,6 +136,16 @@ export const dictionary: Record<Locale, Dictionary> = {
           description: "فرۆشتن، خەرجی، و قازانج وەک وێنەیەکی سادە — نەک خشتەیەکی قورس.",
         },
       ],
+      devices: {
+        mobile: {
+          title: "مۆبایل",
+          description: "فرۆشتن و کۆگا لەسەر مۆبایل — لە هەر شوێنێکی دەرمانخانەکەتدا.",
+        },
+        desktop: {
+          title: "کۆمپیوتەر",
+          description: "داشبۆردی تەواو بۆ تیمەکەت لەسەر PC — فرۆشتن، کۆگا، و ڕاپۆرت.",
+        },
+      },
     },
     showcase: {
       title: "وێنەیەک لە ڕۆژی کار",
@@ -154,7 +168,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       facebook: "فەیسبووک",
       x: "ئێکس",
     },
-    backToTop: { label: "گەڕانەوە بۆ سەرەوە", eyebrow: "سەرەوە", action: "سەرەوە" },
     theme: { toLight: "گۆڕین بۆ دۆخی ڕووناک", toDark: "گۆڕین بۆ دۆخی تاریک" },
     lang: { switchTo: "English", short: "EN" },
   },
@@ -170,7 +183,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       close: "Close menu",
       items: [
         { href: "#features", label: "Features" },
-        { href: "#showcase", label: "Preview" },
+        { href: "#showcase", label: "Overview" },
         { href: "#partners", label: "Partners" },
         { href: "#contact", label: "Contact" },
       ],
@@ -178,7 +191,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     hero: {
       headline: "One system for the whole pharmacy",
       sentence:
-        "Medicine sales, stock, expiry, and cash — in a calm workspace that speaks Kurdish and English.",
+        "Medicine sales, stock, expiry, and cash — in a calm workspace that speaks Kurdish, English, and Arabic.",
       cta: "Message us on WhatsApp",
       mediaAlt: "Animated medical cross",
     },
@@ -190,7 +203,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     ],
     features: {
       eyebrow: "Why Nergz",
-      title: "Every shift, in one clear view",
+      title: "Everything your pharmacy needs, in one place",
       subtitle: "Tools that speed the floor up without turning the day into noise.",
       items: [
         {
@@ -218,6 +231,16 @@ export const dictionary: Record<Locale, Dictionary> = {
           description: "Sales, costs, and margin as a simple picture — not a heavy spreadsheet.",
         },
       ],
+      devices: {
+        mobile: {
+          title: "Mobile",
+          description: "Sales and stock on your phone — from anywhere on the shop floor.",
+        },
+        desktop: {
+          title: "Desktop",
+          description: "Full dashboard for your team on PC — sales, stock, and reports.",
+        },
+      },
     },
     showcase: {
       title: "A snapshot of the working day",
@@ -240,7 +263,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       facebook: "Facebook",
       x: "X",
     },
-    backToTop: { label: "Back to top", eyebrow: "Top", action: "Top" },
     theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
     lang: { switchTo: "English", short: "ک" },
   },
@@ -256,7 +278,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       close: "إغلاق القائمة",
       items: [
         { href: "#features", label: "الميزات" },
-        { href: "#showcase", label: "معاينة" },
+        { href: "#showcase", label: "نظرة عامة" },
         { href: "#partners", label: "الشركاء" },
         { href: "#contact", label: "تواصل" },
       ],
@@ -276,7 +298,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     ],
     features: {
       eyebrow: "لماذا نرگز",
-      title: "كل وردية، في نظرة واحدة واضحة",
+      title: "كل ما تحتاجه صيدليتك، في مكان واحد",
       subtitle: "أدوات تُسرّع العمل دون أن تُشوّش على يومك.",
       items: [
         {
@@ -304,6 +326,16 @@ export const dictionary: Record<Locale, Dictionary> = {
           description: "المبيعات، التكاليف، والهامش كصورة بسيطة — لا جدولاً ثقيلاً.",
         },
       ],
+      devices: {
+        mobile: {
+          title: "الجوال",
+          description: "المبيعات والمخزون على هاتفك — من أي مكان في الصيدلية.",
+        },
+        desktop: {
+          title: "الحاسوب",
+          description: "لوحة تحكم كاملة لفريقك على الحاسوب — مبيعات، مخزون، وتقارير.",
+        },
+      },
     },
     showcase: {
       title: "لمحة عن يوم العمل",
@@ -326,7 +358,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       facebook: "فيسبوك",
       x: "إكس",
     },
-    backToTop: { label: "العودة إلى الأعلى", eyebrow: "أعلى", action: "أعلى" },
     theme: { toLight: "التبديل إلى الوضع الفاتح", toDark: "التبديل إلى الوضع الداكن" },
     lang: { switchTo: "کوردی", short: "ع" },
   },

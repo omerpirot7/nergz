@@ -1,4 +1,3 @@
-import { BackToTop } from "@/components/back-to-top";
 import { DocumentMeta } from "@/components/document-meta";
 import { Features } from "@/components/features";
 import { Footer } from "@/components/footer";
@@ -21,7 +20,6 @@ export default function HomePage() {
         <Partners />
       </main>
       <Footer />
-      <BackToTop />
     </>
   );
 }

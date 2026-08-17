@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Noto_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
 import { AppProvider } from "@/context/app-context";
-import { dictionary } from "@/content/dictionary";
+import { defaultLocale, dictionary, locales, type Locale } from "@/content/dictionary";
 import "./globals.css";
 
 const display = Plus_Jakarta_Sans({
@@ -29,6 +30,7 @@ try {
   if (theme !== "light" && theme !== "dark") {
     theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
+  document.cookie = "nergz-locale=" + locale + ";path=/;max-age=31536000;SameSite=Lax";
   var root = document.documentElement;
   root.lang = locale;
   root.dir = locale === "en" ? "ltr" : "rtl";
@@ -37,18 +39,26 @@ try {
 } catch (e) {}
 `;
 
-export default function RootLayout({
+function resolveLocale(value: string | undefined): Locale {
+  return locales.includes(value as Locale) ? (value as Locale) : defaultLocale;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const initialLocale = resolveLocale(cookieStore.get("nergz-locale")?.value);
+  const initialDir = dictionary[initialLocale].dir;
+
   return (
-    <html lang="ckb" dir="rtl" suppressHydrationWarning>
+    <html lang={initialLocale} dir={initialDir} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body className={`${display.variable} ${arabic.variable} font-body antialiased`}>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider initialLocale={initialLocale}>{children}</AppProvider>
       </body>
     </html>
   );
