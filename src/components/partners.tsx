@@ -68,7 +68,7 @@ export function Partners() {
     <Section id="partners" width="narrow">
       <SectionHeader title={t.partners.title} wave />
       <div
-        className="[container-type:inline-size] dir-ltr cursor-grab overflow-hidden active:cursor-grabbing"
+        className="edge-fade-x [container-type:inline-size] dir-ltr cursor-grab overflow-hidden active:cursor-grabbing"
         dir="ltr"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}

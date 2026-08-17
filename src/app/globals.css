@@ -102,8 +102,42 @@ h4 {
   background-size: auto, 22px 22px;
 }
 
+/* Horizontal edge fade for overflow scroll/marquee viewports */
+.edge-fade-x,
 .marquee-mask {
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  --edge-fade-size: 10%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 var(--edge-fade-size),
+    #000 calc(100% - var(--edge-fade-size)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 var(--edge-fade-size),
+    #000 calc(100% - var(--edge-fade-size)),
+    transparent 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+@media (min-width: 768px) {
+  .edge-fade-x,
+  .marquee-mask {
+    --edge-fade-size: 16%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .edge-fade-x,
+  .marquee-mask {
+    --edge-fade-size: 20%;
+  }
 }
 
 .focus-ring {
