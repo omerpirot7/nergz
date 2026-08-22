@@ -36,6 +36,17 @@ export function Navbar() {
         return;
       }
 
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        const visible =
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+        if (visible >= window.innerHeight * 0.35) {
+          setActive("#contact");
+          return;
+        }
+      }
+
       const marker = window.innerHeight * 0.35;
       let current = "";
 
@@ -67,8 +78,10 @@ export function Navbar() {
 
   const go = (href: string) => {
     setOpen(false);
+    const behavior = reduce ? "auto" : "smooth";
+
     if (href === "#top") {
-      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      window.scrollTo({ top: 0, behavior });
       setActive("");
       return;
     }
@@ -77,9 +90,19 @@ export function Navbar() {
     if (!el) return;
 
     setActive(href);
+
+    if (href === "#contact") {
+      const top = Math.max(
+        0,
+        document.documentElement.scrollHeight - window.innerHeight,
+      );
+      window.scrollTo({ top, behavior });
+      return;
+    }
+
     const headerOffset = window.matchMedia("(min-width: 768px)").matches ? 88 : 80;
     const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
-    window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
+    window.scrollTo({ top, behavior });
   };
 
   return (
